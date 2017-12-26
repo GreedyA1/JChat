@@ -44,9 +44,11 @@ public class SThread extends Thread {
 	public void open() throws Exception {
 		IStream = new DataInputStream(new BufferedInputStream(Socket.getInputStream()));
 		OStream = new DataOutputStream(new BufferedOutputStream(Socket.getOutputStream()));
+		Server.updateList();
 	}
 
 	public void close() throws Exception {
+		Server.updateList();
 		if (Socket != null)
 			Socket.close();
 		if (IStream != null)

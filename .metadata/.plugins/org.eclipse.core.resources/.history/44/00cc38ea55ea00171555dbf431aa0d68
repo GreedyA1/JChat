@@ -1,0 +1,20 @@
+/**
+ * 
+ */
+package simple;
+
+/**
+ * @author Vato
+ *
+ */
+public class ChatLogin {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
