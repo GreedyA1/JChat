@@ -38,11 +38,13 @@ public class CThread extends Thread {
 		while (true) {
 			try {
 				String read = IStream.readUTF();
-				if(read.substring(0, 15).equals("CLIENTS ONLINE:")) {
-					String[] clients = read.substring(16,read.length()-1).split(", ");
-					client.updateClientList(clients);
+				if(read.length() > 15) {
+					if(read.substring(0, 15).equals("CLIENTS ONLINE:")) {
+						String[] clients = read.substring(16,read.length()-1).split(", ");
+						client.updateClientList(clients);
+					}
 				}
-				client.display(IStream.readUTF());
+				client.display(read);
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				client.stop();

@@ -2,6 +2,8 @@ package simple;
 
 import java.net.*;
 import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.Objects;
 import java.io.*;
 
 public class Server implements Runnable {
@@ -12,7 +14,7 @@ public class Server implements Runnable {
 	HashMap<Integer, String> hmap = new HashMap<Integer, String>();
 
 	public Server(int port) {
-		System.out.println("Binding to port " + port + ", please wait  ...");
+		System.out.println("Binding to port " + port);
 		try {
 			server = new ServerSocket(port);
 			System.out.println("Server started: " + server);
@@ -65,15 +67,38 @@ public class Server implements Runnable {
 		if (input.equals("@@@")) {
 			clients[findClient(ID)].send("Ending Connection for editing Server address and port");
 			remove(ID);
-		} else if (input.substring(0, 3).equals("$$$")) {
+		} else if (input.equals("$$$")) {
 			clients[findClient(ID)].send("CLIENTS ONLINE:" + hmap.values().toString());
-		} else if (input.substring(0, 3).equals("###")) {
+//		} else if (input.substring(0, 3).equals("###")) {
+//			clients[findClient(ID)].send("Connected");
+//			Integer theKey = getKeyByValue(hmap,input.substring(3, input.length()));
+//			if(theKey != null) {
+//				clients[theKey.intValue()].send("NEW MESSAGE");
+//			}
+		}else if (input.substring(0, 3).equals("###")) {
 			clients[findClient(ID)].send("Connected");
 			hmap.put(ID,input.substring(3, input.length()));
 			 } else
 			for (int i = 0; i < clientCount; i++)
 				clients[i].send(hmap.get(ID) + ": " + input);
 	}
+	
+	public synchronized void updateList() {
+		for (int i = 0; i < clientCount; i++) {
+			System.out.println("UPDATING CLIENTS");
+			clients[i].send("CLIENTS ONLINE:" + hmap.values().toString());
+		}
+	}
+	
+	public static <Integer, String> Integer getKeyByValue(HashMap<Integer, String> map, String value) {
+	    for (Entry<Integer, String> entry : map.entrySet()) {
+	        if (Objects.equals(value, entry.getValue())) {
+	            return entry.getKey();
+	        }
+	    }
+	    return null;
+	}
+	
 
 
 	public synchronized void remove(int ID) {

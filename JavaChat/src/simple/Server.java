@@ -78,7 +78,7 @@ public class Server implements Runnable {
 		}else if (input.substring(0, 3).equals("###")) {
 			clients[findClient(ID)].send("Connected");
 			hmap.put(ID,input.substring(3, input.length()));
-			 } else
+		} else
 			for (int i = 0; i < clientCount; i++)
 				clients[i].send(hmap.get(ID) + ": " + input);
 	}

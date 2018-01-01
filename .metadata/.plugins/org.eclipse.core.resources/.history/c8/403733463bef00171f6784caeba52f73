@@ -37,6 +37,11 @@ public class CThread extends Thread {
 	public void run() {
 		while (true) {
 			try {
+				String read = IStream.readUTF();
+				if(read.substring(0, 15).equals("CLIENTS ONLINE:")) {
+					String[] clients = read.substring(16,read.length()-1).split(", ");
+					client.updateClientList(clients);
+				}
 				client.display(IStream.readUTF());
 			} catch (Exception e) {
 				System.out.println(e.getMessage());

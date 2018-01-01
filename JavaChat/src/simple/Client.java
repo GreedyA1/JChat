@@ -68,15 +68,13 @@ public class Client extends Applet {
 		textField.setEnabled(false);
 		edit.setEnabled(false);
 		display.setEditable(false);
-//		setSize(500, 400);
+		setSize(500, 400);
 	}
 	
 	
 	public void updateClientList(String [] clients) {
-		System.out.println("AY00000");
 		clientList.removeAllElements();
 		for(String client : clients) {
-			System.out.println("AYOOOOO");
 			clientList.addElement(client);
 		}
 	}

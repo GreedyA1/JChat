@@ -22,8 +22,10 @@
 		<item value="true" key="wrap"/>
 		<item value="true" key="wholeword"/>
 		<list key="findhistory">
-			<item value="T"/>
+			<item value="start"/>
 			<item value="hmap"/>
+			<item value="edit"/>
+			<item value="T"/>
 			<item value="connect"/>
 		</list>
 		<list key="replacehistory">
