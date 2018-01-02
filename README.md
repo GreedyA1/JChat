@@ -1,6 +1,6 @@
 # JChat
 
-[![Build Status](https://travis-ci.org/GreedyAlchemist/Xiangqi.svg?branch=master)](https://travis-ci.org/GreedyAlchemist/Xiangqi)
+[![Build Status](https://travis-ci.org/GreedyAlchemist/JChat.svg?branch=master)](https://travis-ci.org/GreedyAlchemist/JChat)
 
 JChat is a project for originally developed for WPI CS3516 computer networks course. JChat is a client and server chat application, with the support of multiple clients. Currently you are able to login to any JChat servers if running online using their IP address. With the use of java threads JChat supports multiple clients. 
 
